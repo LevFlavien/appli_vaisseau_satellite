@@ -1,0 +1,145 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "bootstrap_xl";
+
+// FontAwesome
+//@import "~font-awesome/scss/font-awesome";
+
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+}
+
+.form-inputs {
+  padding: 2em;
+  background-color: white;
+  border: 1px solid #d3e0e9;
+  border-radius: 4px;
+
+  & > fieldset {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #ccd0d2;
+  }
+
+  .btn {
+    max-height: 36px;
+  }
+
+  .kitrow {
+    margin-bottom: 10px;
+  }
+
+  .v-select .dropdown-toggle .clear {
+    display: none;
+  }
+
+  .add {
+    background-color: #3c763d;
+    border-color: #3c763d;
+  }
+  .delete {
+    background-color: #a94442;
+    border-color: #a94442;
+  }
+  .move {
+    //border: 1px solid black;
+    text-align: center;
+    //background-color: ;
+    //color: white;
+  }
+
+  .loader-img {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .img-thumbnail {
+    padding: 1px;
+  }
+
+  .check {
+    border: 1px solid #2a88bd;
+    background-color: #3097D1;
+    padding: 4px;
+  }
+
+  .new {
+    border-color: #a94442;
+    background-color: #a94442;
+  }
+}
+
+.preview {
+  background-color: rgb(250, 250, 250);
+  margin: -10px;
+  padding: 0 10px;
+
+  list-style: square;
+
+  font-family: "Tahoma", "Raleway", sans-serif;
+  font-size: 12px;
+
+  h1, h2, h3 {
+    color: #af1f23;
+    font-family: "Fjalla One", "Tahoma", "Raleway", sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-top: 25px;
+  }
+
+  .title {
+    font-size: 2em;
+  }
+
+  .reference {
+    background-color: #af1f23;
+    color: white;
+    border-radius: 2px;
+    padding: 1px 4px;
+  }
+
+  .price {
+    color: #1FAF45;
+    font-size: 2em;
+  }
+  .price-label {
+    color: #1faf45;
+    vertical-align: super;
+  }
+}
+
+.add {
+  text-align: center;
+}
+
+.action {
+  width: 100%;
+}
+
+.fa {
+  font-size: 1.5em;
+}
+
+footer {
+  border-top: 1px solid #d3e0e9;
+  background-color: #ffffff;
+  margin-top: 10px;
+}
+
