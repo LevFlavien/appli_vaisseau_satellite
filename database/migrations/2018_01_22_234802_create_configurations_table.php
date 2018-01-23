@@ -14,6 +14,7 @@ class CreateConfigurationsTable extends Migration
     public function up()
     {
         Schema::create('configuration', function (Blueprint $table) {
+            $table->increments('id');
             $table->ipAddress('amiral_address');
             $table->boolean('active');
         });

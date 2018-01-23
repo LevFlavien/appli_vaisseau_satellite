@@ -29,14 +29,15 @@ class ConfigurationRequest extends FormRequest
         ];
     }
 
-    public function persist() {
-        Text::create(request()->all());
-    }
+    public function save() {
 
-    public function update($id) {
+        $configuration = Configuration::all()->first();
 
-        $text = Text::findOrFail($id);
-        $text->fill(request()->all());
-        $text->save();
+        if ($configuration) {
+            $configuration->fill(request()->all());
+            $configuration->save();
+        } else {
+            Configuration::create(request()->all());
+        }
     }
 }

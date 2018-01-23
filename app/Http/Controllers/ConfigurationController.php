@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ConfigurationRequest;
 use Illuminate\Http\Request;
 use App\Configuration;
 
@@ -15,9 +16,7 @@ class ConfigurationController extends Controller
         return view('configuration.form', compact('configuration'));
     }
 
-    public function save(Configuration $configuration) {
-
-        dd($configuration);
+    public function save(ConfigurationRequest $configuration) {
 
         $configuration->save();
 
