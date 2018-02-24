@@ -1,19 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="textForm" class="container">
-        <div class="card">
-            <div class="card-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Vaisseau satellite : Configuration</div>
 
-                {!! BootForm::open(['model' => $configuration ?? new App\Configuration(), 'store' => 'configuration.save']) !!}
+                    <div class="panel-body">
 
-                    {!! BootForm::text('amiral_address'); !!}
-                    {!! BootForm::radios('active', null, [true => 'Active',  false => 'Inactive']) !!}
-                    {!! BootForm::submit('Valider') !!}
+                        {!! BootForm::inline(['model' => $configuration ?? new App\Configuration(), 'store' => 'configuration.save', 'update' => 'configuration.save']) !!}
 
-                {!! BootForm::close() !!}
+                            <fieldset>
+                                {!! BootForm::text('amiral_address'); !!}
+                            </fieldset>
+                            <fieldset>
+                                {!! BootForm::radios('active', null, [1 => 'Active',  0 => 'Inactive']) !!}
+                            </fieldset>
+                            {!! BootForm::submit('Valider') !!}
 
-                <a href="{!! route('home') !!}"><button class="btn btn-primary">Retour</button></a>
+                        {!! BootForm::close() !!}
+
+                        <a href="{!! route('home') !!}"><button class="btn btn-primary">Retour</button></a>
+
+                    </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

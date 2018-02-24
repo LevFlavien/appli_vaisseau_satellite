@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Vaisseau satellite : token</div>
+                    <div class="panel-heading">Vaisseau satellite : Token</div>
 
                     <div class="panel-body">
 
@@ -21,6 +21,8 @@
                         @endif
 
                         <p>Date de dernière communication : </p>
+
+                        <a href="{!! route('home') !!}"><button class="btn btn-primary">Retour</button></a>
 
                     </div>
                 </div>
