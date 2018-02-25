@@ -4,11 +4,14 @@
 
 Installation des composants nécessaires :
 
-`composer install`
+```
+composer install
+```
 
 Installation de la base de données :
 
 ```
+touch database/database.sqlite
 php artisan migrate
 ```
 
@@ -34,6 +37,14 @@ DB_DATABASE="path/to/db.sqlite"
 ```
 
 #### Lancement de l'application
+
+##### Scheduler
+
+Lancer le cron job :
+
+`php artisan schedule:run`
+
+##### Interface
 
 Utiliser le serveur built-in :
 
