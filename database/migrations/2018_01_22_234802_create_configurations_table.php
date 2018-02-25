@@ -17,6 +17,7 @@ class CreateConfigurationsTable extends Migration
             $table->increments('id');
             $table->ipAddress('amiral_address');
             $table->boolean('active');
+            $table->timestamps();
         });
     }
 

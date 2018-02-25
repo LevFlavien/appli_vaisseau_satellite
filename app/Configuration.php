@@ -8,5 +8,4 @@ class Configuration extends Model
 {
     protected $table = 'configuration';
     protected $fillable = ['amiral_address', 'active'];
-    public $timestamps = false;
 }

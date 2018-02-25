@@ -22,15 +22,14 @@ class GetToken extends Command
      *
      * @var string
      */
-    protected $description = 'Send current token to amiral and try to get new token';
+    protected $description = "Envoie le token actuel à l'amiral et tente de récupérer le nouveau";
 
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
     }
 
@@ -39,15 +38,19 @@ class GetToken extends Command
      *
      * @return mixed
      */
-    public function handle()
-    {
-
+    public function handle() {
         $configuration = Configuration::all()->first();
 
         if ($configuration) {
+            if (!$configuration->active) {
+                $this->error("Le satellite n'est pas actif.");
+                return $this->endError();
+            }
             $address = $configuration->amiral_address;
         } else {
             $this->error("L'adresse de l'amiral n'est pas définie dans la configuration du satellite.");
+
+            $this->endError();
             return;
         }
 
@@ -61,46 +64,69 @@ class GetToken extends Command
         try {
             $request = $client->get($address . $token);
         } catch (RequestException $e) {
-            echo("Echec de la communication avec l'amiral.");
+            $this->error("Echec de la communication avec l'amiral.");
             echo $e->getRequest() . "\n";
             if ($e->hasResponse()) {
                 echo $e->getResponse() . "\n";
             }
 
-            $this->noTokenAction();
+            $this->error('Pas de token reçu, vérification du dernier contact...');
+            $this->noTokenAction($configuration);
 
+            $this->endError();
             return;
         }
 
         $responseCode = $request->getStatusCode();
 
-        // TODO code erreur ?
+        if ($responseCode == 200) {
+            $newToken = unserialize($request->getbody())[0];
 
-        $token = unserialize($request->getbody())[0];
+            if ($newToken == $token->token) {
+                $this->error('Le token reçu est similaire. Vérification du dernier contact...');
+                $this->noTokenAction($configuration);
+            }
 
-        Token::destroy();
-        Token::create('token');
+            $this->info('Token reçu, mise à jour...');
 
-        // Récupération token configuration amiral.
+            Token::destroy($token->id);
+            Token::create(['token' => $newToken]);
+            $this->endSuccess();
+        } else {
+            $this->error('Pas de token reçu, vérification du dernier contact...');
+            $this->noTokenAction($configuration);
+        }
     }
 
-    // TODO que faire si le token n'a pas encore été généré ?
-    private function noTokenAction() {
+    /**
+     * Action à reproduire quand l'amiral n'a pas pu envoyer un nouveau token.
+     * @param Configuration $configuration
+     */
+    private function noTokenAction($configuration) {
         $token = Token::all()->first();
 
         if ($token) {
             $tokenDate = $token->updated_at;
-            $currentDate = new \DateTime();
+        } else {
+            $tokenDate = $configuration->updated_at;
         }
-        dump($currentDate, $tokenDate);
+        $currentDate = new \DateTime();
 
         $interval = $currentDate->getTimestamp() - $tokenDate->getTimestamp();
 
         if ($interval >= 5400) {
-            $this->info('Délais dépassé sans nouvelle réponse. Départ de la flotte...');
+            $this->error('Délais dépassé sans nouvelle réponse (1h30). Départ de la flotte...');
             $configuration = Configuration::all()->first();
             $configuration->active = false;
             $configuration->save();
         }
+    }
+
+    private function endError() {
+        $this->info('Fin du programme. Erreurs détectées.');
+    }
+
+    private function endSuccess() {
+        $this->info('Fin du programme avec succès');
     }
 }
