@@ -2,12 +2,6 @@
 
 #### Pré-requis :
 
-Dans le fichier `.env`, spécifier le chemin d'accès de la base de donnée SQLite. Créer un fichier `db.sqlite` vide si nécessaire.
-
-```
-DB_DATABASE="path/to/db.sqlite"
-```
-
 Installation des composants nécessaires :
 
 `composer install`
@@ -27,6 +21,17 @@ Installation des packages :
 Compilation des assets :
 
 `npm run dev`
+
+#### (Optionnel) Base de données custom
+
+Les paramètres suivant peuvent être modifiés :
+
+```
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE="path/to/db.sqlite"
+```
 
 #### Lancement de l'application
 
