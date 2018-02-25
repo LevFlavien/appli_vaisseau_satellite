@@ -15,6 +15,7 @@ echo Récupération du projet...
 curl https://codeload.github.com/LevFlavien/appli_vaisseau_satellite/tar.gz/test -o satellite.tar.gz
 tar -zxvf satellite.tar.gz
 cd appli_vaisseau_satellite-test
+rm install.sh
 
 # composer installation
 echo Installation de composer...
