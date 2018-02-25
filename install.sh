@@ -26,7 +26,7 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 
 # project install
-composer install
+composer.phar install
 
 # .env
 echo Generation du fichier .env...
