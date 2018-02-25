@@ -20,6 +20,6 @@ class ConfigurationController extends Controller
 
         $configuration->save();
 
-        return view('configuration.form');
+        return redirect('configuration');
     }
 }
