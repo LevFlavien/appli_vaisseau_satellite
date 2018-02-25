@@ -25,7 +25,7 @@ class ConfigurationRequest extends FormRequest
     public function rules()
     {
         return [
-            'amiral_address' => 'max:15'
+            'amiral_address' => 'max:20'
         ];
     }
 

@@ -36,6 +36,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="{!! route('tokens') !!}">Token</a></li>
+                        <li><a href="{!! route('configuration') !!}">Configuration</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
