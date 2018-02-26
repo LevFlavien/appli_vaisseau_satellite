@@ -65,3 +65,10 @@ Lancer le cron job :
 Utiliser le serveur built-in :
 
 `php artisan serve`
+
+#### Lancement du script de sauvegarde
+
+Déplacer le projet sur le bureau
+Modifier le fichier sauvegarde.bat :
+Changer le nom d'user par celui de votre pc.
+Si besoin, changez le lieu de destination de la copie.
