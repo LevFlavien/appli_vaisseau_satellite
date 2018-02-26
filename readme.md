@@ -2,6 +2,8 @@
 
 #### Pré-requis :
 
+* Environnement Linux
+* PHP 7
 
 #### Fichier .env
 
