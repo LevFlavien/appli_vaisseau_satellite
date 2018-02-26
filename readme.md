@@ -68,7 +68,9 @@ Utiliser le serveur built-in :
 
 #### Lancement du script de sauvegarde
 
-Déplacer le projet sur le bureau
+Déplacer le projet sur le bureau.
 Modifier le fichier sauvegarde.bat :
+
 Changer le nom d'user par celui de votre pc.
+
 Si besoin, changez le lieu de destination de la copie.
