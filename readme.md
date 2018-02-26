@@ -2,26 +2,31 @@
 
 #### Pré-requis :
 
-Installation des composants nécessaires :
+
+#### Fichier .env
+
+Généreration du fichier `.env` et de la clé d'application :
+
+```
+mv .env.example .env
+php artisan key:generate
+```
+
+#### Composer
+
+Installation des composants PHP nécessaires :
 
 ```
 composer install
 ```
 
-Installation de la base de données :
+#### Base de données :
+
+Création du fichier sqlite et migration :
 
 ```
 touch database/database.sqlite
 php artisan migrate
-```
-
-#### Fichier .env
-
-Générer le fichier `.env` et la clé d'application :
-
-```
-mv .env.example .env
-php artisan key:generate
 ```
 
 #### (Optionnel) Développement front-end :
