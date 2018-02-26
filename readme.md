@@ -15,6 +15,15 @@ touch database/database.sqlite
 php artisan migrate
 ```
 
+#### Fichier .env
+
+Générer le fichier `.env` et la clé d'application :
+
+```
+mv .env.example .env
+php artisan key:generate
+```
+
 #### (Optionnel) Développement front-end :
 
 Installation des packages :
